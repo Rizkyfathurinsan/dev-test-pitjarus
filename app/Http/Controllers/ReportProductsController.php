@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\report_products;
+use App\Models\Store;
+use App\Models\Store_Account;
+use App\Models\Store_Area;
+use App\Models\Product;
+use App\Models\Product_Brand;
 use Illuminate\Http\Request;
 
 use App\Charts\Report_productChart;
@@ -17,12 +22,20 @@ class ReportProductsController extends Controller
     public function index()
     {
         $report_products=report_products::all();
+        $store= Store::all();
+        $store_account=Store_Account::all();
+        $store_area=Store_Area::pluck('area_name');
+        $product=Product::all();
+        $product_brand=Product_Brand::all();
+
+        $nilai = 
+
 
         $chart = new Report_productChart;
 
-        $chart->labels(['One', 'Two', 'Three']);
+        $chart->labels($store_area);
 
-        $chart->dataset('My dataset 1', 'line', [1, 2, 3, 4]);
+        $chart->dataset('Nilai', 'bar', [1, 2, 3, 4]);
 
 
 
